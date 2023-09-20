@@ -22,7 +22,7 @@ class DetailFragment: Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.let{
-            binding.tvName.text = it.getString("name", "")
+            binding.tvName2.text = it.getString("name", "")
         }
     }
 

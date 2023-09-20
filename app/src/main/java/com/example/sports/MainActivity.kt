@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity(), OnClickListener{
         val args = Bundle()
         args.putString("name", sport.name)
         fragment.arguments = args
-        supportFragmentManager.beginTransaction().add(R.id.containerMain, fragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.containerMain, fragment).addToBackStack(null).commit()
 
     }
 }
