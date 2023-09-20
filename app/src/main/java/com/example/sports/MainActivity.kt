@@ -9,6 +9,7 @@ import com.google.android.material.snackbar.Snackbar
 class MainActivity : AppCompatActivity(), OnClickListener{
     private lateinit var binding: ActivityMainBinding
     private lateinit var listAdapter: SportListAdapter
+    private lateinit var adapter: SportAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -18,10 +19,12 @@ class MainActivity : AppCompatActivity(), OnClickListener{
     }
     private fun setupRecyclerView(){
         listAdapter = SportListAdapter(this)
+        adapter = SportAdapter(this)
         binding.recyclerView.apply{
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = listAdapter
+           // adapter = listAdapter
+            adapter = this@MainActivity.adapter
         }
     }
     private fun sports(): MutableList<Sport>{
@@ -40,7 +43,10 @@ class MainActivity : AppCompatActivity(), OnClickListener{
     }
     private fun getAllSports(){
         val sportsData = sports()
-        listAdapter.submitList(sportsData)
+        //listAdapter.submitList(sportsData)
+        sportsData.forEach{sport ->
+            adapter.add(sport)
+        }
     }
     override fun onClick(sport: Sport) {
         Snackbar.make(binding.root, sport.name, Snackbar.LENGTH_SHORT).show()

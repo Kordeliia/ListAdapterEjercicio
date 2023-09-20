@@ -57,6 +57,12 @@ class SportAdapter(private val listener: OnClickListener) : RecyclerView.Adapter
                 })
         }
     }
+
+    fun add(sport: Sport) {
+        sports.add(sport)
+        notifyItemInserted(sports.size-1)
+    }
+
     inner class ViewHolder (view: View) : RecyclerView.ViewHolder(view){
         val binding = ItemSportBinding.bind(view)
         fun setListener(sport: Sport){
