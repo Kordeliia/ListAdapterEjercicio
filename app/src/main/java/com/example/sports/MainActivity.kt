@@ -50,5 +50,11 @@ class MainActivity : AppCompatActivity(), OnClickListener{
     }
     override fun onClick(sport: Sport) {
         Snackbar.make(binding.root, sport.name, Snackbar.LENGTH_SHORT).show()
+        val fragment = DetailFragment()
+        val args = Bundle()
+        args.putString("name", sport.name)
+        fragment.arguments = args
+        supportFragmentManager.beginTransaction().add(R.id.containerMain, fragment).commit()
+
     }
 }

@@ -19,6 +19,13 @@ class DetailFragment: Fragment(){
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        arguments?.let{
+            binding.tvName.text = it.getString("name", "")
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
