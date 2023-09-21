@@ -29,6 +29,16 @@
         android:shadowRadius="4"
         android:shadowDx="2"
         android:shadowDy="2"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/imgSport2"
+        app:layout_constraintBottom_toBottomOf="parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <TextView
         android:id="@+id/tvDescripcion"
         android:layout_width="match_parent"
@@ -58,7 +68,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvVistas"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -67,4 +77,6 @@
         android:orientation="horizontal"
         tools:listitem="@layout/item_sport"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+    </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

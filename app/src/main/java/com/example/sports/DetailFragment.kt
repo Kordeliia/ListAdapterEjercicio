@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,9 +14,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.sports.databinding.ActivityMainBinding
 import com.example.sports.databinding.FragmentDetailBinding
-
-
-
+import com.google.android.material.snackbar.Snackbar
 
 
 class DetailFragment: Fragment(){
@@ -76,4 +75,6 @@ class DetailFragment: Fragment(){
         super.onDestroy()
         _binding = null
     }
+
+
 }
