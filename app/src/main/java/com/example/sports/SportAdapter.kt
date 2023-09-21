@@ -7,16 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.constraintlayout.motion.widget.MotionScene.Transition
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.CustomTarget
 import com.example.sports.databinding.ItemSportBinding
 
-class SportAdapter(private val listener: OnClickListener) : RecyclerView.Adapter<SportAdapter.ViewHolder>() {
+class SportAdapter() : RecyclerView.Adapter<SportAdapter.ViewHolder>() {
     private lateinit var context: Context
     private val sports = mutableListOf<Sport>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,14 +26,13 @@ class SportAdapter(private val listener: OnClickListener) : RecyclerView.Adapter
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val sport = sports[position]
         with(holder){
-            setListener(sport)
             binding.tvName.text = sport.name
             Glide.with(context)
                 .asBitmap()
                 .load(sport.imgURL)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop()
-                .into(object: CustomTarget<Bitmap>(1920, 720){
+                .into(object: CustomTarget<Bitmap>(1280, 720){
                     override fun onResourceReady(resource: Bitmap, transition: com.bumptech.glide.request.transition.Transition<in Bitmap>?) {
                         binding.progressBar.visibility = View.GONE
                         binding.imgPhoto.scaleType = ImageView.ScaleType.CENTER_CROP
@@ -59,15 +55,14 @@ class SportAdapter(private val listener: OnClickListener) : RecyclerView.Adapter
     }
 
     fun add(sport: Sport) {
-        sports.add(sport)
-        notifyItemInserted(sports.size-1)
+        if(!sports.contains(sport)){
+            sports.add(sport)
+            notifyItemInserted(sports.size-1)
+        }
     }
 
     inner class ViewHolder (view: View) : RecyclerView.ViewHolder(view){
         val binding = ItemSportBinding.bind(view)
-        fun setListener(sport: Sport){
-            binding.root.setOnClickListener{ listener.onClick(sport) }
-        }
     }
 
 }
