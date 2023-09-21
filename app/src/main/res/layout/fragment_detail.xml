@@ -8,14 +8,13 @@
     android:focusable="true"
     android:clickable="true">
     <ImageView
-        android:id="@+id/imgSport"
+        android:id="@+id/imgSport2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:contentDescription="Imagen del deporte"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintDimensionRatio="10:4"
-        tools:src="@drawable/ic_loading"
         />
 
     <TextView
@@ -23,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?attr/textAppearanceHeadline6"
-        app:layout_constraintBottom_toBottomOf="@id/imgSport"
+        app:layout_constraintBottom_toBottomOf="@id/imgSport2"
         tools:text="Nombre del deporte"
         android:textColor="@color/white"
         android:shadowColor="@color/black"
@@ -36,7 +35,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?attr/textAppearanceBody1"
         android:padding="@dimen/common_padding_default"
-        app:layout_constraintTop_toBottomOf="@id/imgSport"
+        app:layout_constraintTop_toBottomOf="@id/imgSport2"
         app:layout_constraintBottom_toTopOf="@+id/tvTTPI"
         tools:text="Descripcion del deporte"
         android:textColor="@color/black"
